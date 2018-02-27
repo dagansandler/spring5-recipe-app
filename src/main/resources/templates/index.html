@@ -6,7 +6,24 @@
 </head>
 <body>
 
-    <p>Welcome to the Spring 5 Recipe App</p>
+    <h1>Welcome to the Spring 5 Recipe App</h1>
+    <h2>Recipes</h2>
+    <table th:border="1">
+        <tr>
+            <th>Description</th>
+            <th>Difficulty</th>
+            <th>Servings</th>
+            <th>Preparation Time</th>
+            <th>Cooking Time</th>
+        </tr>
+        <tr th:each="recipe : ${recipes}">
+            <td th:text="${recipe.description}">description placeholder</td>
+            <td th:text="${recipe.difficulty}">difficulty placeholder</td>
+            <td th:text="${recipe.servings}">servings placeholder</td>
+            <td th:text="${recipe.prepTime}">prep placeholder</td>
+            <td th:text="${recipe.cookTime}">cook placeholder</td>
+        </tr>
+    </table>
 
 </body>
 </html>
