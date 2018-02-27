@@ -112,6 +112,7 @@ public class Recipe {
 
     public void setNotes(Notes notes) {
         this.notes = notes;
+        notes.setRecipe(this);
     }
 
     public Long getId() {
@@ -136,5 +137,16 @@ public class Recipe {
 
     public void setCategories(Set<Category> categories) {
         this.categories = categories;
+    }
+
+    public Recipe addIngredient(Ingredient ingredient) {
+        ingredient.setRecipe(this);
+        getIngredients().add(ingredient);
+        return this;
+    }
+
+        public Recipe addCategory(Category category) {
+        getCategories().add(category);
+        return this;
     }
 }
