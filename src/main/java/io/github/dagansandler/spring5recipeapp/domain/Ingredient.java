@@ -1,6 +1,7 @@
 package io.github.dagansandler.spring5recipeapp.domain;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 public class Ingredient {
@@ -11,7 +12,7 @@ public class Ingredient {
 
     private String description;
 
-    private String amount;
+    private BigDecimal amount;
 
     @OneToOne
     private UnitOfMeasure uom;
@@ -35,11 +36,11 @@ public class Ingredient {
         this.description = description;
     }
 
-    public String getAmount() {
+    public BigDecimal getAmount() {
         return amount;
     }
 
-    public void setAmount(String amount) {
+    public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
 
