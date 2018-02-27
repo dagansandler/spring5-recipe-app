@@ -20,6 +20,7 @@ public class Recipe {
 
     private String url;
 
+    @Lob
     private String directions;
 
     @Enumerated(EnumType.STRING)
