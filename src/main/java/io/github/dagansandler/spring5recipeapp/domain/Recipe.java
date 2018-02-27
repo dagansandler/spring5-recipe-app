@@ -22,8 +22,8 @@ public class Recipe {
 
     private String directions;
 
-    // todo add
-    // private Difficulty difficulty;
+    @Enumerated(EnumType.STRING)
+    private Difficulty difficulty;
 
     @Lob
     private Byte[] image;
@@ -112,5 +112,13 @@ public class Recipe {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Difficulty getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(Difficulty difficulty) {
+        this.difficulty = difficulty;
     }
 }
