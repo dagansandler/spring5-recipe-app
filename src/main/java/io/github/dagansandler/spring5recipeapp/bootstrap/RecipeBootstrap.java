@@ -4,6 +4,7 @@ import io.github.dagansandler.spring5recipeapp.domain.*;
 import io.github.dagansandler.spring5recipeapp.repositories.CategoryRepository;
 import io.github.dagansandler.spring5recipeapp.repositories.RecipeRepository;
 import io.github.dagansandler.spring5recipeapp.repositories.UnitOfMeasureRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
@@ -14,8 +15,8 @@ import java.util.List;
 import java.util.Optional;
 
 @Component
+@Slf4j
 public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEvent> {
-
 
     private RecipeRepository recipeRepository;
 
@@ -36,9 +37,12 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
 
     private void initData() {
         recipeRepository.saveAll(getRecipes());
+        log.debug("Recipes created");
     }
 
     private List<Recipe> getRecipes() {
+
+        log.debug("Creating Recipes");
 
         List<Recipe> recipes = new ArrayList<>(2);
 
@@ -142,11 +146,12 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
                 .addIngredient(new Ingredient("freshly grated black pepper", new BigDecimal(2), dashUom))
                 .addIngredient(new Ingredient("ripe tomato, seeds and pulp removed, chopped", new BigDecimal(".5"), eachUom));
 
-        guacRecipe.addCategory(americanCategory)
-                .addCategory(mexicanCategory);
+        guacRecipe.getCategories().add(americanCategory);
+        guacRecipe.getCategories().add(mexicanCategory);
 
         //add to return list
         recipes.add(guacRecipe);
+        log.debug("Created guacamole recipe");
 
         //Yummy Tacos
         Recipe tacosRecipe = new Recipe();
@@ -191,7 +196,7 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
                 .addIngredient(new Ingredient("fresh-squeezed orange juice", new BigDecimal(3), tableSpoonUom))
                 .addIngredient(new Ingredient("Olive Oil", new BigDecimal(2), tableSpoonUom))
                 .addIngredient(new Ingredient("boneless chicken thighs", new BigDecimal(4), tableSpoonUom))
-                .addIngredient(new Ingredient("small corn tortillasr", new BigDecimal(8), eachUom))
+                .addIngredient(new Ingredient("small corn tortillas", new BigDecimal(8), eachUom))
                 .addIngredient(new Ingredient("packed baby arugula", new BigDecimal(3), cupsUom))
                 .addIngredient(new Ingredient("medium ripe avocados, slic", new BigDecimal(2), eachUom))
                 .addIngredient(new Ingredient("radishes, thinly sliced", new BigDecimal(4), eachUom))
@@ -201,10 +206,11 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
                 .addIngredient(new Ingredient("cup sour cream thinned with 1/4 cup milk", new BigDecimal(4), cupsUom))
                 .addIngredient(new Ingredient("lime, cut into wedges", new BigDecimal(4), eachUom));
 
-        tacosRecipe.addCategory(americanCategory)
-                .addCategory(mexicanCategory);
+        tacosRecipe.getCategories().add(americanCategory);
+        tacosRecipe.getCategories().add(mexicanCategory);
 
         recipes.add(tacosRecipe);
+        log.debug("Created tacos recipe");
         return recipes;
     }
 }
