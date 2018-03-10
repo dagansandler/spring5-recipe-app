@@ -3,27 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <title>Spring 5 Recipe App</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
 </head>
 <body>
 
-    <h1>Welcome to the Spring 5 Recipe App</h1>
-    <h2>Recipes</h2>
-    <table th:border="1">
-        <tr>
-            <th>Description</th>
-            <th>Difficulty</th>
-            <th>Servings</th>
-            <th>Preparation Time</th>
-            <th>Cooking Time</th>
-        </tr>
-        <tr th:each="recipe : ${recipes}">
-            <td th:text="${recipe.description}">description placeholder</td>
-            <td th:text="${recipe.difficulty}">difficulty placeholder</td>
-            <td th:text="${recipe.servings}">servings placeholder</td>
-            <td th:text="${recipe.prepTime}">prep placeholder</td>
-            <td th:text="${recipe.cookTime}">cook placeholder</td>
-        </tr>
-    </table>
+<div class="container-fluid" style="margin-top: 20px">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card card-primary">
+                <div class="card-header bg-primary text-white">
+                    <h1 class="card-title">My Recipes!</h1>
+                </div>
+                <div class="card-block">
+                    <table class="table table-hover table-responsive-md" th:if="${not #lists.isEmpty(recipes)}">
+                        <thead class="thead-light">
+                        <tr>
+                            <th>Description</th>
+                            <th>Difficulty</th>
+                            <th>Preparation Time</th>
+                            <th>Cooking Time</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:remove="all">
+                            <td>description placeholder</td>
+                            <td>difficulty placeholder</td>
+                            <td>prep placeholder</td>
+                            <td>cook placeholder</td>
+                        </tr>
+                        <tr th:each="recipe : ${recipes}">
+                            <td th:text="${recipe.description}">description placeholder</td>
+                            <td th:text="${recipe.difficulty}">difficulty placeholder</td>
+                            <td th:text="${recipe.prepTime}">prep placeholder</td>
+                            <td th:text="${recipe.cookTime}">cook placeholder</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
