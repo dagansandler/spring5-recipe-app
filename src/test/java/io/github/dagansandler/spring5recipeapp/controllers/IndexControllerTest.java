@@ -9,7 +9,6 @@ import org.springframework.ui.Model;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.anySet;
-import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
